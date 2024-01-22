@@ -1,16 +1,14 @@
-import React from 'react';
+import React from 'react'
+import Logo from '../ReuseComponents/Logo'
 
-function Login() {
+function LeftSection() {
   return (
     <>
-      <div className='w-screen h-screen bg-white flex'>
-        {/* Left Section */}
         <div className='flex flex-col justify-around items-center w-[50%] h-full'>
-          <div className='h-[25%] w-10/12 flex items-center'>
-            <img src="Group.png" className='h-10 w-8 ml-2' alt="logo" /> {/* Logo */}
-          </div>
-
-          <div className='h-[70%] w-10/12 flex justify-center'> {/* Login Section */}
+            <Logo/>  {/* Top Logo div */}
+           
+           {/* Login Section */} 
+          <div className='h-[70%] w-10/12 flex justify-center'> 
             <div className='flex flex-col items-center justify-evenly h-[60%] w-8/12 mt-2'>
               <div className='flex flex-col justify-center gap-y-3 items-center'>
                 <h1 className='font-medium text-lg'>LOGIN</h1>
@@ -33,18 +31,8 @@ function Login() {
             </div>
           </div>
         </div>
-
-        {/* Right Section */}
-        <div className='w-[50%] h-full relative flex flex-col items-end'>
-          <img src="lamp.png" className='h-[10rem] w-24 absolute right-1/2 transform-translate-x-35%' alt="lamp" /> {/* Lamp Image */}
-          <div className='w-[90%] h-full relative flex justify-end items-end'> {/* Background Images Div*/}
-            <img src="Rectangle.png" className='absolute w-[40%] h-[40%] top-1/3 left-1/3 transform-translate-50%-50%' alt="" />
-            <img className='h-[94%] w-full' src="/Rectangle1.png" alt="" />
-          </div>
-        </div>
-      </div>
     </>
-  );
+  )
 }
 
-export default Login;
+export default LeftSection
