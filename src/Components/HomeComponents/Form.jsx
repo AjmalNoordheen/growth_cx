@@ -3,17 +3,28 @@ import { collection, addDoc, arrayUnion} from 'firebase/firestore';
 import { db } from '../../Config/firebase';
 import { toast } from "react-toastify";
 import LoopIcon from '@mui/icons-material/Loop';
+import { getAuth } from 'firebase/auth';
+import { useSelector } from "react-redux";
 
 function Form() {
     const titleRef = useRef('')
     const descRef = useRef('')
     const [spin,setSpin] = useState(false)
-
+    const user = useSelector((store)=>store.user.email)
     // Submitting and saving the task to the firestore
   const submitTask = async (e) => {
       try {
           e.preventDefault()
           setSpin(true)
+
+          // // Ensure user is authenticated
+          //  const auth = getAuth();
+          //  const user = auth.currentUser;
+
+          //  if (!user) {
+          //   return toast.warn('User not authenticated');
+          // }
+
       if(titleRef.current.value.trim() === '' || descRef.current.value.trim() === ''){
             return toast.warn('invalid submisssion')
       }
@@ -21,7 +32,8 @@ function Form() {
         await addDoc(collection(db, 'todos'), {
           title: titleRef.current.value,
           description: descRef.current.value,
-          status: arrayUnion('Pending')
+          status: arrayUnion('Pending'),
+          userId: user
         })
         toast.success('added successfully !')
         titleRef.current.value = ''
