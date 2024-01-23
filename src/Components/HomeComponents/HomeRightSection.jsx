@@ -3,8 +3,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { query, collection, onSnapshot, where } from 'firebase/firestore';
 import TodoList from './TodoList';
 import { handleStatusChange, deleteTask } from '../../Service/todoFunction';
-import { db,auth } from '../../Config/firebase';
-import { getAuth } from 'firebase/auth';
+import { db } from '../../Config/firebase';
 import '../../index.css'
 import { useSelector } from 'react-redux';
 
@@ -20,12 +19,14 @@ function HomeRightSection() {
     try {
 
       if(user){
-        const q = query(collection(db, 'todos'), where('userId', '==', user));
-
+        const q = query(collection(db, 'todos'));
         const unsub = onSnapshot(q, (querySnapshot) => {
           let todosArray = [];
+
           querySnapshot.forEach((doc) => {
-            todosArray.push({ ...doc.data(), id: doc.id });
+            if(doc.data().userId === user){
+              todosArray.push({ ...doc.data(), id: doc.id });
+            } 
           });
           todosArray.sort((a, b) => b.id - a.id);
           setAllTodos(todosArray);
