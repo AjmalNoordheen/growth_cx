@@ -1,9 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Logo from '../ReuseComponents/Logo'
 import SearchIcon from '@mui/icons-material/Search';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { IconButton } from '@mui/material';
 
 function Home() {
+  const [id,setId] = useState(-1)
+  const [showSug,setShowSug] = useState(false)
+
+  const showSuggetion = (index)=>{
+    setId(index)
+    showSug ? setShowSug(false) : setShowSug(true)
+  }
   return (
     <>
         <div className='w-screen h-screen bg-white flex'>
@@ -35,15 +43,15 @@ function Home() {
         {/* Right Section */}
             <div className='w-1/2 h-full flex items-center'>
                 <div className='w-full h-[89%] border-l-[1.5px] flex flex-col items-center justify-evenly  border-l-slate-200'>
-                    <div className='h-[20%] w-10/12 bg-white flex flex-col justify-around'>
+                    <div className='h-[20%] w-9/12 bg-white flex flex-col justify-around'>
                         <h1 className='font-semibold'>TODO LIST</h1>
                         <div className='flex justify-between'>
                          <div className='w-[240px]  border rounded-sm  border-[#D9D9D9] flex  justify-center items-center h-[38px]'>
                             <input type="search"  placeholder='Search' className='h-full placeholder-[#00000096]  w-[85%] outline-none'/>
-                            <SearchIcon className='hover:scale-110'/>
+                            <SearchIcon className='hover:scale-110 cursor-pointer'/>
                          </div>
-                         <div className='w-[160px] h-[38px] border rounded-sm  border-[#D9D9D9]'>
-                            <select  name="Filter" className='w-full h-full outline-none'  id="">
+                         <div className='w-[160px] h-[38px] border rounded-sm  px-2 cursor-pointer border-[#D9D9D9]'>
+                            <select  name="Filter" className='w-full h-full outline-none cursor-pointer'  id="">
                                 <option value="" className='hidden'>Filter By</option>
                                 <option value="Completed">Completed</option>
                                 <option value="Favourite">Favourite</option>
@@ -52,15 +60,25 @@ function Home() {
                          </div>
                        </div> 
                     </div>
-                    <div className='h-[70%] w-10/12  flex flex-col justify-end'>
+                    <div className='h-[70%] w-9/12  flex flex-col justify-end'>
                         <div className='w-full h-[90%]  space-y-1'>
-                            {Array.from({length:5}).map(()=>{
-                            return <div className='flex items-center p-2 border-b border-b-[#00000026] justify-between'>
+                            {Array.from({length:5}).map((item,index)=>{
+                            return <div className='flex relative items-center p-2 border-b border-b-[#00000026] justify-between'>
                                 <div>
-                                    <h1>Todo Title 1</h1>
-                                    <small>Description comes here</small>
+                                  {console.log(index)}
+                                    <h1 className='text-sm font-semibold'>Todo Title 1</h1>
+                                    <small className='text-xs text-slate-700'>Description comes here</small>
                                 </div>
-                                <MoreVertIcon/>
+                                <IconButton onClick={()=>showSuggetion(index)}>
+                                <MoreVertIcon  className='text-gray-700 cursor-pointer'/>
+                                </IconButton>
+                                {id === index && showSug &&
+                                <div className='absolute w-[5.5rem] shadow-2xl text-slate-700 cursor-pointer border text-xs font-semibold h-[5rem] flex flex-col justify-evenly rounded-sm  z-10  space-y-0.5 bg-white -right-11 -bottom-16'>
+                                  <p className='pl-2 hover:bg-slate-200 py-1'>Completed</p>
+                                  <p className='pl-2 hover:bg-slate-200 py-1'>Favourite</p>
+                                  <p className='pl-2 hover:bg-slate-200 py-1'>Delete</p>
+                                </div>
+                                }
                             </div>
                             })}
                         </div>
