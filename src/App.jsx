@@ -5,6 +5,7 @@ import Home from './Components/HomeComponents/Home'
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { useSelector } from 'react-redux';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const user = useSelector((store)=>store.user?.email)
@@ -15,7 +16,7 @@ function App() {
         <Route path='/' index element={user ? <Navigate to={'/home'}/> : <Login/>}/>
         <Route path='/home' element={user ? <Home/> : <Navigate to={'/'}/>}/>
       </Routes>
-      <ToastContainer />
+      <ToastContainer theme='dark' autoClose={2000} />
     </>
   );
 }

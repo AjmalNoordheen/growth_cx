@@ -8,7 +8,7 @@ function Logo() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const location = useLocation('')
-  console.log()
+
   const logout = async () => {
     try {
       await auth.signOut()
@@ -22,7 +22,7 @@ function Logo() {
   return (
     <div className='h-[25%] w-10/12 flex items-center justify-between'>
       <img src="Group.png" className='h-10 w-8 ml-2' alt="logo" /> {/* Logo */}
-      {location.pathname === '/home' && <button onClick={logout}>logout</button>}
+      {location.pathname === '/home' && <button className='font-semibold border rounded px-2 py-1 hover:bg-black hover:text-white hover:border-blue-300' onClick={logout}>Logout</button>}
     </div>
   )
 }
