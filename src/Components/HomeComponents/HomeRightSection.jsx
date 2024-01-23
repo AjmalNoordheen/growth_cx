@@ -17,7 +17,6 @@ function HomeRightSection() {
 
   useEffect(() => {
     try {
-
       if(user){
         const q = query(collection(db, 'todos'));
         const unsub = onSnapshot(q, (querySnapshot) => {
