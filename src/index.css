@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@media (max-width: 380px) {
+    .leftContainer {
+      height: 90%;
+    }
+  }
+
+::-webkit-scrollbar{
+    width: 0;
+}

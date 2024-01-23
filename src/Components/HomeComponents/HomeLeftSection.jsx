@@ -1,12 +1,12 @@
 import React, { useRef } from 'react'
 import Logo from '../ReuseComponents/Logo'
 import Form from './Form';
-
+import '../../index.css'
 function HomeLeftSection() {
     
   return (
     <>
-        <div className='flex flex-col justify-around items-center w-[50%] h-full'>
+        <div className='leftContainer flex flex-col justify-around items-center md:w-1/2 h-2/3 sm:h-full'>
           <Logo/>
 
           <div className='h-[70%] w-full flex flex-col items-center gap-y-8'>
@@ -19,7 +19,7 @@ function HomeLeftSection() {
                 Aliquet at eleifend feugiat vitae faucibus nibh dolor dui.
               </small>
             </div>
-            
+
             <Form/>
           </div>
         </div>

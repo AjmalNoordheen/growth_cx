@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import Login from './Pages/Login';
-import Home from './Components/HomeComponents/HomeRightSection'
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { useSelector } from 'react-redux';

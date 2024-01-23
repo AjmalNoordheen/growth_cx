@@ -4,7 +4,7 @@ import HomeLeftSection from '../Components/HomeComponents/HomeLeftSection'
 
 function HomePage() {
   return (
-    <div className='w-screen h-screen bg-white flex overflow-x-hidden'>
+    <div className='w-screen h-screen bg-white md:flex overflow-x-hidden'>
       <HomeLeftSection/>
       <HomeRightSection/>
     </div>
