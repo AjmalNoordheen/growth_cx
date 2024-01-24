@@ -7,11 +7,13 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { handleStatusChange, deleteTask } from '../../Service/todoFunction';
 
 const TodoItem = ({ item, index, showSug,showSuggestion,id,setShowSug }) => {
+  
+
   return (
     <div className="flex relative items-center p-2 border-b border-b-[#00000026] justify-between">
       
       <div className="w-1/2">
-        <h1 className="text-sm font-semibold">{item.title}</h1>
+        {item?.status?.includes("Delete") ? <s className="text-sm font-semibold block">{item.title}</s> : <h1 className="text-sm font-semibold">{item.title}</h1>}
         <small className="text-xs text-slate-700">{item.description}</small>
       </div>
 
@@ -37,12 +39,12 @@ const TodoItem = ({ item, index, showSug,showSuggestion,id,setShowSug }) => {
             <>
               <p onClick={() => handleStatusChange(item.id, "Completed",setShowSug)}
                 className="pl-2 hover:bg-slate-200 py-1">
-                Completed
+                {item?.status?.includes("Favourite") ? "Incomplete" :  "Complete"}
               </p>
 
               <p onClick={() => handleStatusChange(item.id, "Favourite",setShowSug)}
                 className="pl-2 hover:bg-slate-200 py-1">
-                Favourite
+                {item?.status?.includes("Favourite") ? "Remove star" :  "Favourite"} 
               </p>
 
               <p onClick={() => handleStatusChange(item.id, "Delete",setShowSug)}
