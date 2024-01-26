@@ -17,13 +17,6 @@ function Form() {
           e.preventDefault()
           setSpin(true)
 
-          // // Ensure user is authenticated
-          //  const auth = getAuth();
-          //  const user = auth.currentUser;
-
-          //  if (!user) {
-          //   return toast.warn('User not authenticated');
-          // }
 
       if(titleRef.current.value.trim() === '' || descRef.current.value.trim() === ''){
             return toast.warn('invalid submisssion')
