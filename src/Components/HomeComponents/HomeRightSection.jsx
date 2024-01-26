@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import { query, collection, onSnapshot, where } from 'firebase/firestore';
 import TodoList from './TodoList';
-import { handleStatusChange, deleteTask } from '../../Service/todoFunction';
 import { db } from '../../Config/firebase';
 import '../../index.css'
 import { useSelector } from 'react-redux';
@@ -83,7 +82,7 @@ function HomeRightSection() {
 
           {/* Listing Component */}
           <div className='h-[70%] w-11/12 sm:w-10/12 xl:w-9/12  flex flex-col justify-end '>
-            <TodoList id={id} setShowSug={setShowSug} showSug={showSug} showSuggestion={showSuggestion} data={filteredData.filter((item) => item.title.toLowerCase().includes(searchInput.toLowerCase()))}  handleStatusChange={handleStatusChange} deleteTask={deleteTask} />
+            <TodoList id={id} setShowSug={setShowSug} showSug={showSug} showSuggestion={showSuggestion} data={filteredData.filter((item) => item.title.toLowerCase().includes(searchInput.toLowerCase()))}   />
           </div>
         </div>
       </div>
